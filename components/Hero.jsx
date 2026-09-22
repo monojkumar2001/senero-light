@@ -26,14 +26,17 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="relative z-10"
         >
-          <h1 className="mt-5 max-w-xl text-balance text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl lg:text-[2.35rem] lg:leading-[1.25]">
-            Motion Sensor Bulb Holder 360 Degrees Intelligent Induction
-            Integrated PIR Motion Sensor E27 Lamp Socket
+          <h1 className="mt-2 max-w-xl text-balance text-3xl font-bold leading-snug tracking-tight text-white sm:text-4xl lg:text-[2.6rem] lg:leading-[1.2]">
+            আপনি গেলেই লাইট জ্বলে উঠবে! 
           </h1>
 
+          <p className="mt-4 text-lg font-medium text-glow sm:text-xl">
+            বারবার সুইচ খোঁজার ঝামেলা শেষ।
+          </p>
+
           <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-            সাধারণ E27 বাল্বকে স্মার্ট মোশন লাইটে বদলান। সকেটে লাগান, বাল্ব
-            ঘুরান — আর কোনো সুইচ খোঁজার ঝামেলা নেই।
+            PIR মোশন সেন্সর লাইট হোল্ডার আপনার চলাফেরা শনাক্ত করে স্বয়ংক্রিয়ভাবে
+            লাইট ON/OFF করে।
           </p>
 
           <div className="mt-6 flex flex-wrap items-end gap-3">
@@ -48,12 +51,9 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8">
             <a href="#order" className="btn-primary">
-              এখনই অর্ডার করুন
-            </a>
-            <a href="#demo" className="btn-secondary">
-              ভিডিও দেখুন
+              অর্ডার করতে চাই
             </a>
           </div>
         </motion.div>

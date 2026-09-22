@@ -31,9 +31,7 @@ export default function Home() {
         <ProductShowcase />
         <OfferSection />
         <OrderForm />
-        <CodTrust />
-        <FAQ />
-        <FinalCTA />
+ 
       </main>
       <StickyMobileCTA />
       <WhatsAppButton />

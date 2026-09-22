@@ -190,7 +190,9 @@ export default function OrderForm() {
           transition={{ duration: 0.45 }}
         >
           <p className="section-kicker">অর্ডার</p>
-          <h2 className="section-title mt-3">আপনার অর্ডার করুন</h2>
+          <h2 className="section-title mt-3">
+            অর্ডার করতে নিচের ফর্মটি পূরণ করুন
+          </h2>
           <p className="section-sub">
             প্যাকেজ বেছে নিশ্চিত করুন — ক্যাশ অন ডেলিভারি উপলব্ধ।
           </p>

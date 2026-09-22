@@ -1,94 +1,65 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import {
-  Moon,
-  Search,
-  PowerOff,
-  LightbulbOff,
-  Hand,
-} from "lucide-react";
+import { X } from "lucide-react";
 
 const problems = [
-  {
-    icon: Moon,
-    title: "অন্ধকারে ঘরে ঢোকা",
-    description: "সুইচ খুঁজে পেতে আগেই অন্ধকারে পা ফেলতে হয়।",
-  },
-  {
-    icon: Search,
-    title: "রাতে সুইচ খোঁজা",
-    description: "ঘুম থেকে উঠে আলো জ্বালাতে হিমশিম খেতে হয়।",
-  },
-  {
-    icon: PowerOff,
-    title: "আলো বন্ধ ভুলে যাওয়া",
-    description: "দিনভর আলো জ্বলে থেকে বিদ্যুৎ অপচয় হয়।",
-  },
-  {
-    icon: LightbulbOff,
-    title: "অন্ধকার সিঁড়ি ও করিডোর",
-    description: "অন্ধকার পথে চলাচল অসুবিধাজনক ও ঝুঁকিপূর্ণ।",
-  },
-  {
-    icon: Hand,
-    title: "বারবার সুইচ চাপা",
-    description: "প্রতিবার হাতে সুইচ অন-অফ করতে হয় — ক্লান্তিকর।",
-  },
+  "অন্ধকারে ঢুকে সুইচ খুঁজতে হচ্ছে",
+  "সিঁড়িতে ওঠার সময় আলো নেই",
+  "রাতে বাথরুমে যেতে বারবার সুইচ চাপতে হচ্ছে",
+  "হাত ভর্তি থাকলে লাইট জ্বালানো আরও বিরক্তিকর",
+  "বাসার কোনো জায়গায় লাইট জ্বালিয়ে রেখে চলে আসছেন",
 ];
 
 export default function ProblemSection() {
   return (
-    <section className="section-padding bg-slate-50 soft-grid">
-      <div className="container-page">
+    <section className="section-padding bg-slate-50">
+      <div className="container-page mx-auto max-w-3xl">
         <motion.div
-          className="mx-auto max-w-3xl text-center"
+          className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="section-kicker">সমস্যাটি চেনা</p>
-          <h2 className="section-title mt-3">
-            এখনও হাতে সুইচ খুঁজে আলো জ্বালাচ্ছেন?
+          <h2 className="section-title">
+            রাতে লাইট জ্বালাতে সুইচ খুঁজে বেড়াতে হয়?
           </h2>
+          <p className="mt-3 text-lg font-medium text-muted">ভাবুন তো—</p>
         </motion.div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {problems.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className={`border-b border-border pb-5 ${
-                  index === 4 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""
-                }`}
-              >
-                <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-amber-50 text-primary">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="text-base font-semibold text-dark">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {item.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
+        <ul className="mt-10 space-y-4">
+          {problems.map((item, index) => (
+            <motion.li
+              key={item}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.05 }}
+              className="flex items-start gap-3 border-b border-border pb-4 text-base text-dark sm:text-lg"
+            >
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-500">
+                <X className="h-4 w-4" strokeWidth={3} />
+              </span>
+              <span>{item}</span>
+            </motion.li>
+          ))}
+        </ul>
 
-        <motion.p
-          className="mt-12 text-center text-xl font-semibold text-primary sm:text-2xl"
+        <motion.div
+          className="mt-10 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.45, delay: 0.15 }}
         >
-          একবার লাগালেই সমাধান।
-        </motion.p>
+          <p className="text-xl font-semibold text-primary sm:text-2xl">
+            এই ছোট ছোট ঝামেলাগুলোই এবার বাদ দিন।
+          </p>
+          <a href="#order" className="btn-primary mt-6 inline-flex">
+            অর্ডার করতে চাই
+          </a>
+        </motion.div>
       </div>
     </section>
   );
