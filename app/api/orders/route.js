@@ -98,6 +98,8 @@ export async function POST(request) {
     }
 
     const phone = normalizeBdPhone(mobile);
+    // BuyTiq expects local BD format in many dashboards
+    const buytiqPhone = phone.replace(/^\+?88/, "") || phone;
 
     if (hasOrderedPhone(phone)) {
       return Response.json(
@@ -149,7 +151,7 @@ export async function POST(request) {
       email: "",
       user_id: product.buytiq.userId,
       shop_id: product.buytiq.shopId,
-      phone,
+      phone: buytiqPhone,
       address: String(address).trim(),
       division: division || null,
       district: district || null,
@@ -173,14 +175,26 @@ export async function POST(request) {
       ...(fbp ? { fbp } : {}),
     };
 
-    const buytiqRes = await fetch(`${product.buytiq.apiBase}/api/orders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    let buytiqRes;
+    try {
+      buytiqRes = await fetch(`${product.buytiq.apiBase}/api/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch (networkError) {
+      console.error("BuyTiq network error:", networkError);
+      return Response.json(
+        {
+          success: false,
+          message: "অর্ডার সার্ভারে পৌঁছায়নি। ইন্টারনেট চেক করে আবার চেষ্টা করুন।",
+        },
+        { status: 502 }
+      );
+    }
 
     const data = await buytiqRes.json().catch(() => ({}));
 
@@ -196,7 +210,7 @@ export async function POST(request) {
           value: pricing.total,
           cartItems,
           email: "",
-          phone,
+          phone: buytiqPhone,
           fbc,
           fbp,
         });
@@ -238,6 +252,8 @@ export async function POST(request) {
       flattenMessage(data?.errors) ||
       "অর্ডার ব্যর্থ হয়েছে। আবার চেষ্টা করুন।";
 
+    console.error("BuyTiq order rejected:", buytiqRes.status, data);
+
     return Response.json(
       { success: false, message, data },
       { status: buytiqRes.status || 502 }
@@ -248,6 +264,9 @@ export async function POST(request) {
       {
         success: false,
         message: "অর্ডার পাঠানো যায়নি। আবার চেষ্টা করুন।",
+        ...(process.env.NODE_ENV !== "production"
+          ? { debug: String(error?.message || error) }
+          : {}),
       },
       { status: 500 }
     );
