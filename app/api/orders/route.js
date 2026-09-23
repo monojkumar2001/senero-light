@@ -8,6 +8,11 @@ import {
   normalizeBdPhone,
   getBdMobileError,
 } from "@/lib/phone";
+import {
+  hasOrderedPhone,
+  recordOrderedPhone,
+  DUPLICATE_PHONE_MESSAGE,
+} from "@/lib/orderedPhones";
 
 function flattenMessage(value) {
   if (!value) return null;
@@ -92,6 +97,19 @@ export async function POST(request) {
       );
     }
 
+    const phone = normalizeBdPhone(mobile);
+
+    if (hasOrderedPhone(phone)) {
+      return Response.json(
+        {
+          success: false,
+          code: "DUPLICATE_PHONE",
+          message: DUPLICATE_PHONE_MESSAGE,
+        },
+        { status: 409 }
+      );
+    }
+
     if (!address || String(address).trim().length < 8) {
       return Response.json(
         { success: false, message: "অনুগ্রহ করে সম্পূর্ণ ঠিকানা লিখুন।" },
@@ -115,7 +133,6 @@ export async function POST(request) {
     }
 
     const pricing = getOrderPricing(qty, deliveryArea);
-    const phone = normalizeBdPhone(mobile);
     const cartItems = [
       {
         product_id: product.buytiq.productId,
@@ -168,6 +185,8 @@ export async function POST(request) {
     const data = await buytiqRes.json().catch(() => ({}));
 
     if (buytiqRes.status === 201 || buytiqRes.ok) {
+      recordOrderedPhone(phone);
+
       if (metaEventId) {
         await sendFacebookConversionApi({
           eventName: "Purchase",

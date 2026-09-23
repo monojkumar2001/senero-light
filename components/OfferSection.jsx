@@ -36,7 +36,7 @@ export default function OfferSection() {
             আজই স্মার্ট বাল্ব হোল্ডার নিন
           </h2>
           <p className="mt-4 text-base text-slate-300 sm:text-lg">
-            প্যাকেজ বেছে নিন। ২ পিস বা তার বেশি অর্ডারে ডেলিভারি ফ্রি।
+            প্যাকেজ বেছে নিন। ডেলিভারি: ঢাকার ভিতরে ৳৬০, বাইরে ৳১১০।
           </p>
         </motion.div>
 
@@ -68,7 +68,7 @@ export default function OfferSection() {
                 {formatPrice(item.price)}
               </p>
               <p className="mt-2 text-sm font-medium text-slate-300">
-                {item.freeDelivery ? "ডেলিভারি ফ্রি" : "ডেলিভারি আলাদা"}
+                + ডেলিভারি ৳৬০ / ৳১১০
               </p>
             </motion.a>
           ))}

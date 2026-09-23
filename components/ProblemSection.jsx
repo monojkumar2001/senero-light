@@ -14,7 +14,7 @@ const problems = [
 export default function ProblemSection() {
   return (
     <section className="section-padding bg-slate-50">
-      <div className="container-page mx-auto max-w-3xl">
+      <div className="container-page mx-auto max-w-5xl">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ export default function ProblemSection() {
           <p className="mt-3 text-lg font-medium text-muted">ভাবুন তো—</p>
         </motion.div>
 
-        <ul className="mt-10 space-y-4">
+        <ul className="mt-10 space-y-2">
           {problems.map((item, index) => (
             <motion.li
               key={item}
@@ -38,10 +38,10 @@ export default function ProblemSection() {
               transition={{ duration: 0.35, delay: index * 0.05 }}
               className="flex items-start gap-3 border-b border-border pb-4 text-base text-dark sm:text-lg"
             >
-              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-500">
+              <span className="mt-0.5 flex h-7 w-7 font-bold shrink-0 items-center justify-center rounded-full bg-red-50 text-red-500">
                 <X className="h-4 w-4" strokeWidth={3} />
               </span>
-              <span>{item}</span>
+              <span className="font-bold">{item}</span>
             </motion.li>
           ))}
         </ul>
@@ -53,7 +53,7 @@ export default function ProblemSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.15 }}
         >
-          <p className="text-xl font-semibold text-primary sm:text-2xl">
+          <p className="text-xl font-bold text-primary sm:text-2xl">
             এই ছোট ছোট ঝামেলাগুলোই এবার বাদ দিন।
           </p>
           <a href="#order" className="btn-primary mt-6 inline-flex">

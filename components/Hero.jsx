@@ -2,104 +2,87 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import { product, formatPrice, packages } from "@/lib/product";
-
-import "swiper/css";
-import "swiper/css/pagination";
-
-const slides = product.images;
+import { product } from "@/lib/product";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden hero-glow text-white"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffe4c7_0%,#fff0de_35%,#fff8f0_70%,#fffbf7_100%)]"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-40 soft-grid mix-blend-soft-light" />
-
-      <div className="container-page relative grid min-h-[88vh] items-center gap-10 py-14 lg:grid-cols-2 lg:gap-8 lg:py-20">
+      <div className="container-page max-w-5xl relative z-10 flex flex-col items-center px-4 pb-20 pt-8 text-center sm:pb-10 sm:pt-10 lg:pb-10">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10"
+          transition={{ duration: 0.45 }}
+          className="flex w-full flex-col items-center"
         >
-          <h1 className="mt-2 max-w-xl text-balance text-3xl font-bold leading-snug tracking-tight text-white sm:text-4xl lg:text-[2.6rem] lg:leading-[1.2]">
-            আপনি গেলেই লাইট জ্বলে উঠবে! 
-          </h1>
-
-          <p className="mt-4 text-lg font-medium text-glow sm:text-xl">
-            বারবার সুইচ খোঁজার ঝামেলা শেষ।
-          </p>
-
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-            PIR মোশন সেন্সর লাইট হোল্ডার আপনার চলাফেরা শনাক্ত করে স্বয়ংক্রিয়ভাবে
-            লাইট ON/OFF করে।
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-end gap-3">
-            <p className="text-3xl font-bold text-glow">
-              {formatPrice(packages[0].price)}
-            </p>
-            <p className="pb-1 text-slate-400 line-through">
-              {formatPrice(product.regularPrice)}
-            </p>
-            <p className="pb-1 text-sm text-slate-400">
-              থেকে শুরু · ২+ পিসে ফ্রি ডেলিভারি
-            </p>
-          </div>
-
-          <div className="mt-8">
-            <a href="#order" className="btn-primary">
-              অর্ডার করতে চাই
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="relative mx-auto w-full max-w-md lg:max-w-lg"
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.65, delay: 0.12 }}
-        >
-          <motion.div
-            className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow/30 blur-3xl sm:h-80 sm:w-80"
-            animate={{ opacity: [0.35, 0.7, 0.35], scale: [1, 1.08, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          <Image
+            src="/images/logo.png"
+            alt="Kenarooz"
+            width={200}
+            height={100}
+            priority
+            className=" object-contain "
           />
 
-          <div className="hero-swiper relative mx-auto aspect-square w-full max-w-[440px]">
-            <Swiper
-              modules={[Autoplay, Pagination]}
-              loop
-              speed={750}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              pagination={{ clickable: true }}
-              className="h-full w-full"
-            >
-              {slides.map((src, i) => (
-                <SwiperSlide key={src}>
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={src}
-                      alt={`${product.nameBn} — ছবি ${i + 1}`}
-                      fill
-                      priority={i === 0}
-                      className="object-contain drop-shadow-[0_30px_60px_rgba(251,191,36,0.25)]"
-                      sizes="(max-width: 768px) 90vw, 440px"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          <h1 className="mt-6 max-w-7xl text-center text-balance font-bold leading-snug text-primary pb-4 sm:text-xl md:text-2xl lg:text-[2.1rem]">
+            মানুষ এলেই আলো জ্বলবে—৩৬০° স্মার্ট সেন্সর ল্যাম্প হোল্ডার
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold sm:text-lg md:text-2xl">
+            বারবার সুইচ খোঁজার ঝামেলা শেষ।
+          </p>
+          <h2 className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold sm:text-lg md:text-2xl">
+            PIR Motion Sensor Light Holder আপনার চলাফেরা শনাক্ত করে
+            স্বয়ংক্রিয়ভাবে লাইট ON/OFF করে।
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="relative mt-8 w-full  sm:mt-10"
+        >
+          <div className="relative aspect-square w-full overflow-hidden rounded-sm shadow-[0_16px_40px_rgba(253,119,1,0.18)]">
+            <Image
+              src="/images/hero-banner.png"
+              alt={product.nameBn}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 640px) 92vw, 576px"
+            />
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
+          className="mt-7 sm:mt-8"
+        >
+          <a href="#order" className="btn-primary px-8 py-3">
+            অর্ডার করুন
+          </a>
+        </motion.div>
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 leading-[0]"
+        aria-hidden
+      >
+        <svg
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          className="h-10 w-full sm:h-14 lg:h-16"
+        >
+          <path
+            fill="#ffffff"
+            d="M0,48 C120,72 240,8 360,28 C480,48 600,78 720,58 C840,38 960,8 1080,24 C1200,40 1320,70 1440,48 L1440,80 L0,80 Z"
+          />
+        </svg>
       </div>
     </section>
   );

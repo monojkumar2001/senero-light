@@ -64,8 +64,8 @@
 }
 
 :root {
-  --primary: #d97706;
-  --primary-dark: #b45309;
+  --primary: #fd7701;
+  --primary-dark: #e06800;
   --night: #0b1220;
   --night-soft: #121a2b;
   --dark: #0f172a;
@@ -96,7 +96,7 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_24px_rgba(217,119,6,0.22)] transition-colors duration-200 hover:bg-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_24px_rgba(253,119,1,0.28)] transition-colors duration-200 hover:bg-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
     transform-origin: 50%;
     will-change: transform;
     animation: rsiShaker 2s cubic-bezier(0.35, 0.06, 0.2, 0.98) infinite both;
@@ -116,7 +116,7 @@ body {
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-10 sm:py-10 lg:py-10;
   }
 
   .section-kicker {
@@ -175,6 +175,28 @@ body {
 
   .hero-swiper .swiper-pagination-bullet-active {
     background: #fbbf24;
+    width: 1.5rem;
+    border-radius: 9999px;
+  }
+
+  .showcase-swiper .swiper {
+    overflow: hidden;
+  }
+
+  .showcase-swiper .swiper-pagination {
+    bottom: 0.75rem !important;
+  }
+
+  .showcase-swiper .swiper-pagination-bullet {
+    background: rgba(15, 23, 42, 0.22);
+    opacity: 1;
+    width: 0.5rem;
+    height: 0.5rem;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .showcase-swiper .swiper-pagination-bullet-active {
+    background: #fd7701;
     width: 1.5rem;
     border-radius: 9999px;
   }
