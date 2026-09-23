@@ -37,3 +37,4 @@ next-env.d.ts
 
 # ordered phone blocklist (anti fake-order)
 /data/ordered-phones.json
+config.bat
