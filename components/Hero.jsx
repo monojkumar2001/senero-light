@@ -10,7 +10,7 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden bg-[linear-gradient(180deg,#ffe4c7_0%,#fff0de_35%,#fff8f0_70%,#fffbf7_100%)]"
     >
-      <div className="container-page max-w-5xl relative z-10 flex flex-col items-center px-4 pb-20 pt-8 text-center sm:pb-10 sm:pt-10 lg:pb-10">
+      <div className="container-page max-w-5xl relative z-10 flex flex-col items-center px-4 pb-10 pt-8 text-center sm:pb-10 sm:pt-10 lg:pb-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,15 +26,15 @@ export default function Hero() {
             className=" object-contain "
           />
 
-          <h1 className="mt-6 max-w-7xl text-center text-balance font-bold leading-snug text-primary pb-4 sm:text-xl md:text-2xl lg:text-[2.1rem]">
+          <h1 className="mt-6 max-w-7xl text-center text-balance font-bold leading-snug text-primary pb-4 text-3xl md:text-3xl lg:text-3xl">
             মানুষ এলেই আলো জ্বলবে—৩৬০° স্মার্ট সেন্সর ল্যাম্প হোল্ডার
           </h1>
 
-          <p className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold sm:text-lg md:text-2xl">
+          <p className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold text-xl md:text-2xl lg:text-2xl">
             বারবার সুইচ খোঁজার ঝামেলা শেষ।
           </p>
-          <h2 className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold sm:text-lg md:text-2xl">
-            PIR Motion Sensor Light Holder আপনার চলাফেরা শনাক্ত করে
+          <h2 className="mt-5 max-w-2xl text-center leading-relaxed text-dark font-bold text-md md:text-2xl lg:text-2xl">
+            PIR Motion Sensor Light Holder আপনার চলাফেরা শনাক্ত করে স্বয়ংক্রিয়ভাবে লাইট ON/OFF করে।
             স্বয়ংক্রিয়ভাবে লাইট ON/OFF করে।
           </h2>
         </motion.div>

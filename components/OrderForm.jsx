@@ -405,6 +405,7 @@ export default function OrderForm() {
               className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-[1.2fr_0.8fr]"
             >
               <form
+                id="order-form"
                 onSubmit={handleSubmit}
                 noValidate
                 className="rounded-md border border-border bg-white p-5 shadow-soft sm:p-8"
@@ -550,7 +551,7 @@ export default function OrderForm() {
                       value={form.address}
                       onChange={(e) => updateField("address", e.target.value)}
                       className="w-full resize-y rounded-md border border-border bg-white px-4 py-3 text-text outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                      placeholder=" এলাকা / গ্রাম / জেলা"
+                      placeholder="গ্রাম / থানা / জেলা"
                     />
                     {errors.address && (
                       <p className="mt-1.5 text-sm text-red-600">
@@ -624,13 +625,13 @@ export default function OrderForm() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="btn-primary mt-8 w-full disabled:cursor-not-allowed disabled:opacity-70"
+                  className="btn-primary mt-8 hidden w-full disabled:cursor-not-allowed disabled:opacity-70 lg:block"
                 >
                   {submitting ? "পাঠানো হচ্ছে..." : "অর্ডার নিশ্চিত করুন"}
                 </button>
 
                 {submitError && (
-                  <p className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                  <p className="mt-4 hidden rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700 lg:block">
                     {submitError}
                   </p>
                 )}
@@ -683,8 +684,26 @@ export default function OrderForm() {
                   </div>
                 </dl>
                 <p className="mt-4 text-xs leading-relaxed text-muted">
-                  ক্যাশ অন ডেলিভারি উপলব্ধ। অর্ডার সরাসরি Kenarooz-এ যাবে।
+                  ক্যাশ অন ডেলিভারি
                 </p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">
+                  প্রোডাক্ট হাতে পেয়ে মূল্য পরিশোধ করুন।
+                </p>
+
+                <button
+                  type="submit"
+                  form="order-form"
+                  disabled={submitting}
+                  className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-70 lg:hidden"
+                >
+                  {submitting ? "পাঠানো হচ্ছে..." : "অর্ডার নিশ্চিত করুন"}
+                </button>
+
+                {submitError && (
+                  <p className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700 lg:hidden">
+                    {submitError}
+                  </p>
+                )}
               </aside>
             </motion.div>
           </>
